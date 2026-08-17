@@ -1,0 +1,1044 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --text: #171717;
+    --muted: #777777;
+    --border: #e5e5e5;
+
+    --light-square: #f0d9b5;
+    --dark-square: #b58863;
+
+    --accent: #171717;
+    --danger: #d64545;
+    --success: #258a52;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   COMMON
+========================================= */
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    animation: screenIn .45s ease;
+}
+
+
+/* =========================================
+   START SCREEN
+========================================= */
+
+.startCard {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 42px 30px;
+
+    text-align: center;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, .08);
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #171717;
+    color: white;
+
+    font-size: 38px;
+}
+
+.startCard h1 {
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   NAME INPUT
+========================================= */
+
+.nameBox {
+    margin-top: 35px;
+    text-align: left;
+}
+
+.nameBox label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#playerName {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #dcdcdc;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #fafafa;
+
+    color: var(--text);
+
+    transition: .25s;
+}
+
+#playerName:focus {
+    border-color: #777;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, .05);
+}
+
+#nameError {
+    min-height: 20px;
+
+    margin-top: 7px;
+
+    color: var(--danger);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   OPPONENT PREVIEW
+========================================= */
+
+.opponent {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin: 25px 0;
+}
+
+.opponent span {
+    font-weight: 600;
+}
+
+.opponent strong {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   PRIMARY BUTTON
+========================================= */
+
+#startGameBtn,
+#playAgainBtn {
+    width: 100%;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
+    background: #171717;
+
+    color: white;
+
+    font-weight: 600;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+#startGameBtn:hover,
+#playAgainBtn:hover {
+    background: #333;
+
+    transform: translateY(-2px);
+}
+
+#startGameBtn:active,
+#playAgainBtn:active {
+    transform: scale(.97);
+}
+
+
+/* =========================================
+   LEVEL SCREEN
+========================================= */
+
+.levelCard {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, .08);
+}
+
+.smallTitle {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.levelCard h2 {
+    margin-top: 8px;
+
+    font-size: 30px;
+}
+
+.levelInfo {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.levels {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin: 30px 0;
+}
+
+.levelBtn {
+    min-height: 70px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    background: #fafafa;
+
+    color: var(--text);
+
+    transition: .25s;
+}
+
+.levelBtn:hover:not(:disabled) {
+    transform: translateY(-3px);
+
+    border-color: #999;
+
+    background: white;
+}
+
+.levelBtn.unlocked {
+    background: #171717;
+
+    color: white;
+
+    border-color: #171717;
+}
+
+.levelBtn.completed {
+    background: #258a52;
+
+    color: white;
+
+    border-color: #258a52;
+}
+
+.levelBtn:disabled {
+    cursor: not-allowed;
+
+    opacity: .45;
+}
+
+.levelNumber {
+    display: block;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.levelLabel {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   SECONDARY BUTTON
+========================================= */
+
+.secondaryBtn {
+    padding: 12px 22px;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 11px;
+
+    background: white;
+
+    color: #333;
+
+    transition: .2s;
+}
+
+.secondaryBtn:hover {
+    background: #f3f3f3;
+}
+
+
+/* =========================================
+   GAME SCREEN
+========================================= */
+
+#gameScreen {
+    align-items: flex-start;
+
+    padding-top: 25px;
+    padding-bottom: 35px;
+}
+
+.gameContainer {
+    width: 100%;
+    max-width: 620px;
+
+    margin: auto;
+}
+
+
+/* =========================================
+   GAME HEADER
+========================================= */
+
+.gameHeader {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.gameTitle {
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+#levelText {
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+.iconBtn {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #222;
+
+    font-size: 21px;
+
+    transition: .2s;
+}
+
+.iconBtn:hover {
+    background: #ededed;
+}
+
+
+/* =========================================
+   PLAYERS
+========================================= */
+
+.players {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.player {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 13px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #f1f1f1;
+
+    font-size: 20px;
+}
+
+.player strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+.player span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.vs {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   GAME STATUS
+========================================= */
+
+.gameStatus {
+    margin-bottom: 12px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   CHESS BOARD
+========================================= */
+
+.chessBoard {
+    width: 100%;
+
+    max-width: 600px;
+
+    aspect-ratio: 1 / 1;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, 1fr);
+
+    grid-template-rows:
+        repeat(8, 1fr);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, .16);
+
+    user-select: none;
+}
+
+
+/* =========================================
+   CHESS SQUARES
+========================================= */
+
+.square {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 1 / 1;
+
+    font-size: clamp(28px, 7vw, 54px);
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease;
+}
+
+.square.light {
+    background: var(--light-square);
+}
+
+.square.dark {
+    background: var(--dark-square);
+}
+
+
+/* =========================================
+   CHESS PIECES
+========================================= */
+
+.piece {
+    position: relative;
+
+    z-index: 2;
+
+    line-height: 1;
+
+    font-family:
+        "Segoe UI Symbol",
+        "Noto Sans Symbols 2",
+        serif;
+
+    transition:
+        transform .15s ease;
+}
+
+.square:hover .piece {
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   SELECTED SQUARE
+========================================= */
+
+.square.selected {
+    box-shadow:
+        inset 0 0 0 4px
+        rgba(255, 215, 0, .8);
+}
+
+
+/* =========================================
+   LEGAL MOVE
+========================================= */
+
+.square.possibleMove::after {
+    content: "";
+
+    position: absolute;
+
+    width: 22%;
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 0, 0, .25);
+}
+
+.square.captureMove {
+    box-shadow:
+        inset 0 0 0 5px
+        rgba(180, 40, 40, .55);
+}
+
+
+/* =========================================
+   CHECK
+========================================= */
+
+.square.inCheck {
+    box-shadow:
+        inset 0 0 0 5px
+        rgba(220, 50, 50, .8);
+}
+
+
+/* =========================================
+   GAME CONTROLS
+========================================= */
+
+.gameControls {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.gameControls button {
+    padding: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    background: white;
+
+    color: #333;
+
+    transition: .2s;
+}
+
+.gameControls button:hover {
+    background: #eeeeee;
+}
+
+#resignBtn {
+    color: var(--danger);
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, .55);
+
+    backdrop-filter: blur(4px);
+}
+
+.resultCard {
+    width: 100%;
+    max-width: 400px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 23px;
+
+    animation:
+        modalIn .35s ease;
+}
+
+#resultIcon {
+    font-size: 45px;
+
+    margin-bottom: 12px;
+}
+
+#resultTitle {
+    font-size: 28px;
+}
+
+#resultMessage {
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    line-height: 1.6;
+}
+
+.resultButtons {
+    display: grid;
+
+    gap: 9px;
+
+    margin-top: 25px;
+}
+
+.resultButtons button {
+    padding: 13px;
+
+    border-radius: 11px;
+
+    background: #171717;
+
+    color: white;
+
+    font-weight: 600;
+
+    transition: .2s;
+}
+
+.resultButtons button:hover {
+    background: #333;
+}
+
+#retryLevelBtn,
+#levelsBtn {
+    background: #eeeeee;
+
+    color: #222;
+}
+
+#retryLevelBtn:hover,
+#levelsBtn:hover {
+    background: #dddddd;
+}
+
+
+/* =========================================
+   VICTORY SCREEN
+========================================= */
+
+.victoryCard {
+    width: 100%;
+    max-width: 450px;
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 18px 50px
+        rgba(0, 0, 0, .09);
+
+    animation:
+        modalIn .6s ease;
+}
+
+.crown {
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+.victoryCard h1 {
+    margin: 8px 0 15px;
+
+    font-size: 42px;
+}
+
+.victoryCard > p {
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+.finalLine {
+    margin: 25px 0;
+
+    padding: 12px;
+
+    border-radius: 11px;
+
+    background: #f2f2f2;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes screenIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(.94)
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 650px) {
+
+    .gameContainer {
+        max-width: 560px;
+    }
+
+    .players {
+        gap: 7px;
+    }
+
+    .player {
+        padding: 8px 10px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .screen {
+        padding: 14px;
+    }
+
+    .startCard,
+    .levelCard {
+        padding: 30px 20px;
+    }
+
+    .startCard h1 {
+        font-size: 25px;
+    }
+
+    .levels {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .levelBtn {
+        min-height: 65px;
+    }
+
+    .player {
+        padding: 7px;
+
+        gap: 6px;
+    }
+
+    .player strong {
+        font-size: 11px;
+    }
+
+    .player span {
+        font-size: 9px;
+    }
+
+    .avatar {
+        width: 31px;
+        height: 31px;
+
+        font-size: 17px;
+    }
+
+    .gameControls button {
+        padding: 10px 5px;
+
+        font-size: 12px;
+    }
+
+    .victoryCard {
+        padding: 38px 22px;
+    }
+
+    .victoryCard h1 {
+        font-size: 34px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL DEVICES
+========================================= */
+
+@media (max-width: 350px) {
+
+    .player span {
+        display: none;
+    }
+
+    .player {
+        border: none;
+
+        background: transparent;
+    }
+
+    .vs {
+        font-size: 9px;
+    }
+
+    .square {
+        font-size: 25px;
+    }
+
+}
